@@ -11,37 +11,34 @@
         {{-- barra con navbar --}}
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="#">Sistema de arriendo de Autos</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
+              </button> {{-- revisar esto que es el icono y ver como hacer para que apareza en todos los formatos --}}
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <a class="nav-link" href="#">Vehículos</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="#">Clientes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Arriendos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Usuarios</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Cuenta</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Cerrar Sesión</a>
                   </li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
               </div>
             </div>
           </nav>
@@ -59,7 +56,7 @@
             </div>
             {{-- /título página --}}
 
-            <div class="p-3 pt-1">contenido</div>
+            <div class="p-3 pt-1">@yield('contenido')</div>
 
         </div>
         {{-- /CONTENIDO PAGINA --}}
