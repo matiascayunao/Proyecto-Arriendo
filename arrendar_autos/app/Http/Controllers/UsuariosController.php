@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class UsuriosController extends Controller
+class UsuariosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     /**
@@ -28,7 +30,16 @@ class UsuriosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+
+        $usuario->rut = $request->rut;
+        $usuario->nombre = $request->nombre;
+        $usuario->n_rol = $request->n_rol;
+        $usuario->contraseña = Hash::make($request->contraseña);
+
+        $usuario->save();
+
+        return redirect()->route('usuarios.index');
     }
 
     /**
