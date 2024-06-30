@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehiculos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('matricula')->primary();
+            $table->string('nombre_vehiculo');
+            $table->string('tipo_v');
+            $table->foreign('tipo_v')->reference('id')->on('tipos');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->string('año');
+            $table->string('estado');
+            $table->unsignedBigInteger('valor_v'); #va a ser referenciado en arriendo
+
         });
     }
 

@@ -13,7 +13,22 @@ return new class extends Migration
     {
         Schema::create('arriendos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('matricula_arriendo');
+            $table->foreign('matricula_arriendo')->reference('matricula')->on('vehiculos');
+
+            $table->string('rut_arrendatario');
+            $table->foreign('rut_arrendatario')->reference('rut')->on('usuarios');
+
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_fin');
+
+            $table->unsignedBigInteger('valor_arriendo');
+            $table->foreign('valor_arriendo')->reference('valor_v')->on('vehiculos');
+
+            $table->string('estado_actual');
+            $table->foreign('estado_actual')->reference('id')->on('estados');
+
+
         });
     }
 
