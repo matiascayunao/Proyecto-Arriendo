@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tipo extends Model
 {
     use HasFactory;
+
+    protected $table = 'tipos';
+    
+    public $timestamps = false;
+
+    public function vehiculos()
+    {
+        return $this->hasMany(Vehiculo::class, 'tipo_vehiculo');
+    }
 }
