@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Vehiculo extends Model
 {
     use HasFactory;
+
+    protected $table = 'vehiculos';
+
+    protected $primaryKey = 'matricula';
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
+    public $timestamps = false;
+
+    
+
 }
