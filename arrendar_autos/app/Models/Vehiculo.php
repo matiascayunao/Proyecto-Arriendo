@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Vehiculo extends Model
 {
@@ -20,5 +21,8 @@ class Vehiculo extends Model
     public $timestamps = false;
 
     
-
+    public function tipo(): BelongsTo
+    {
+        return $this->belongsTo(Tipo::class, 'tipo_v');
+    }
 }

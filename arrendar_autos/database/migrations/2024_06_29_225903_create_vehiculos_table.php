@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('año');
             $table->string('estado');
-            $table->unsignedBigInteger('valor_v'); #va a ser referenciado en arriendo
 
         });
     }

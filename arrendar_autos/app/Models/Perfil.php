@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Perfil extends Model
 {
@@ -13,8 +14,8 @@ class Perfil extends Model
 
     public $timestamps = false;
 
-    public function usuarios()
+    public function usuarios(): HasMany
     {
-        return $this->hasMany(Usuario::class, 'perfil');
+        return $this->hasMany(Usuario::class, 'n_rol');
     }
 }

@@ -22,11 +22,11 @@ return new class extends Migration
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
 
-            $table->unsignedBigInteger('valor_arriendo');
-            $table->foreign('valor_arriendo')->reference('valor_v')->on('vehiculos');
+            $table->unsignedBigInteger('tipo');
+            $table->foreign('tipo')->reference('id')->on('tipos');
 
             $table->string('estado_actual');
-            $table->foreign('estado_actual')->reference('id')->on('estados');
+            $table->foreign('estado_actual')->reference('estado')->on('vehiculos');
 
 
         });
