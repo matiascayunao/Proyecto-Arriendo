@@ -21,4 +21,8 @@ class Usuario extends Model
 
     public $timestamps = false;
 
+    public function perfil(): BelongsTo
+    {
+        return $this->belongsTo(Perfil::class, 'n_rol,');
+    }
 }

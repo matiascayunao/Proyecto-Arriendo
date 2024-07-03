@@ -28,7 +28,9 @@ class VehiculosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehiculo = new Vehiculo();
+
+        
     }
 
     /**
