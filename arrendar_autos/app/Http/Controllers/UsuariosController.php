@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Gate;
 
 class UsuariosController extends Controller
 {
@@ -13,6 +15,10 @@ class UsuariosController extends Controller
      */
     public function index()
     {
+        if (Gate::denies('usuarios.gestionar')) {
+            return redirect()->route('home.index');
+        }
+
         $usuarios = Usuario::all();
         return view('usuarios.index', compact('usuarios'));
     }
@@ -47,7 +53,7 @@ class UsuariosController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        return view('usuarios.show', compact('usuario'));
     }
 
     /**
@@ -72,5 +78,26 @@ class UsuariosController extends Controller
     public function destroy(Usuario $usuario)
     {
         //
+    }
+
+    public function verificar(request $request)
+    {
+        $credenciales = $request->only('rut', 'contraseña');
+
+        if (Auth::attempt($credenciales)) {
+            return redirect()->route('home.index');
+        }
+        return back()->withErrors('Creedenciales incorrectas')->onlyInput('rut');
+    }
+
+    public function nombrePerfil():string
+    {
+        return $this->perfil->rol;
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('/');
     }
 }

@@ -12,7 +12,8 @@ class ArriendosController extends Controller
      */
     public function index()
     {
-        //
+        $arriendos = Arriendo::with('vehiculo','tipo')->get();
+        return view('arriendos.index', compact('arriendos'));
     }
 
     /**
@@ -28,7 +29,21 @@ class ArriendosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $arriendo = new Arriendo();
+
+        $arriendo->matricula_arriendo = $request->matricula_arriendo;
+        $arriendo->rut_arrendatario = $request->rut_arrendatario;
+        $arriendo->nombre_arrendatario = $request->nombre_arrendatario;
+        $arriendo->apellido_arrendatario = $request->apellido_arrendatario;
+        $arriendo->fecha_inicio = $request->fecha_inicio;
+        $arriendo->fecha_fin = $request->fecha_fin;
+        $arriendo->tipo = $request->tipo;
+        $arriendo->estado_actual = $request->estado_actual;
+
+        $arriendo->save();
+
+        return redirect()->route('arriendos.index');
+
     }
 
     /**
@@ -36,7 +51,7 @@ class ArriendosController extends Controller
      */
     public function show(Arriendo $arriendo)
     {
-        //
+        return view('arriendos.show', compact('arriendo'));
     }
 
     /**
