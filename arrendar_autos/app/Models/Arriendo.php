@@ -12,19 +12,19 @@ class Arriendo extends Model
 
     protected $table = 'arriendos';
 
-    public function vehiculo(): BelongsTo
+    public function vehiculos(): BelongsTo
     {
         return $this->belongsTo(Vehiculo::class, 'matricula_arriendo');
 
     }
 
-    public function usuario(): BelongsTo
-    {
-        return $this->belongsTo(Usuario::class, 'rut_arrendatario');
-    }
-
-    public function tipo(): BelongsTo
+    public function tipos(): BelongsTo
     {
         return $this->belongsTo(Tipo::class, 'tipo');
+    }
+
+    public function clientes(): BelongsTo
+    {
+        return $this->belongsTo(Cliente::class, 'rut_arrendatario');
     }
 }

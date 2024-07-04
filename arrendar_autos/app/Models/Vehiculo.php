@@ -21,7 +21,7 @@ class Vehiculo extends Model
     public $timestamps = false;
 
     
-    public function tipo(): BelongsTo
+    public function tipos(): BelongsTo
     {
         return $this->belongsTo(Tipo::class, 'tipo_v');
     }

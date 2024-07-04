@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('matricula_arriendo');
             $table->foreign('matricula_arriendo')->reference('matricula')->on('vehiculos');
 
-            $table->string('rut_arrendatario');
-            $table->foreign('rut_arrendatario')->reference('rut')->on('usuarios');
+            $table->unsignedBigInteger('rut_arrendatario');
+            $table->foreign('rut_arrendatario')->reference('id')->on('clientes');
 
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
