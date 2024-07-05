@@ -12,7 +12,8 @@ class TiposController extends Controller
      */
     public function index()
     {
-        //
+        $tipos = Tipo::all();
+        return view('tipos.index', compact('tipos'));
     }
 
     /**
@@ -20,7 +21,7 @@ class TiposController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipos.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class TiposController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipo = new Tipo();
+
+        $tipo->nombre_tipo = $request->tipo_vehiculo;
+        $tipo->precio = $request->precio_tipo;
+
+        $tipo->save();
+        
+        return redirect()->route('tipos.index');
     }
 
     /**
@@ -36,7 +44,7 @@ class TiposController extends Controller
      */
     public function show(Tipo $tipo)
     {
-        //
+        return view('tipos.show', compact('tipo'));
     }
 
     /**
@@ -52,7 +60,12 @@ class TiposController extends Controller
      */
     public function update(Request $request, Tipo $tipo)
     {
-        //
+        $tipo->nombre_tipo_edit = $request->tipo_vehiculo;
+        $tipo->precio_edit = $request->precio_tipo;
+
+        $tipo->save();
+        
+        return redirect()->route('tipos.index');
     }
 
     /**
@@ -60,6 +73,7 @@ class TiposController extends Controller
      */
     public function destroy(Tipo $tipo)
     {
-        //
+        $tipo->delete();
+        return redirect()->route('tipos.index');
     }
 }

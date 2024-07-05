@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tipo_vehiculo');
             $table->unsignedBigInteger('precio_tipo');
+            $table->softDeletes();
         });
     }
 

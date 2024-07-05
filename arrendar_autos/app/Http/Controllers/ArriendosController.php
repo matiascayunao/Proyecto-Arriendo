@@ -12,7 +12,7 @@ class ArriendosController extends Controller
      */
     public function index()
     {
-        $arriendos = Arriendo::with('vehiculo','tipo')->get();
+        $arriendos = Arriendo::with('vehiculo','cliente','tipo')->get();
         return view('arriendos.index', compact('arriendos'));
     }
 
@@ -21,7 +21,10 @@ class ArriendosController extends Controller
      */
     public function create()
     {
-        //
+        $vehiculos = Vehiculo::all();
+        $clientes = Cliente::all();
+        $tipos = Tipo::all();
+        return view('arriendos.create', compact('vehiculos','clientes','tipos'));
     }
 
     /**
@@ -33,12 +36,14 @@ class ArriendosController extends Controller
 
         $arriendo->matricula_arriendo = $request->matricula_arriendo;
         $arriendo->rut_arrendatario = $request->rut_arrendatario;
-        $arriendo->nombre_arrendatario = $request->nombre_arrendatario;
-        $arriendo->apellido_arrendatario = $request->apellido_arrendatario;
         $arriendo->fecha_inicio = $request->fecha_inicio;
         $arriendo->fecha_fin = $request->fecha_fin;
         $arriendo->tipo = $request->tipo;
         $arriendo->estado_actual = $request->estado_actual;
+        $arriendo->valor_arriendo = $request->valor_arriendo;
+        $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/arriendos');
+        $arriendo->imagen_devolucion = $request->file('imagen_devolucion')->store('public/arriendos');
+
 
         $arriendo->save();
 
@@ -66,8 +71,17 @@ class ArriendosController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Arriendo $arriendo)
-    {
-        //
+    {   $arriendo->matricula_arriendo_edit = $request->matricula_arriendo;
+        $arriendo->rut_arrendatario_edit = $request->rut_arrendatario;
+        $arriendo->fecha_inicio_edit = $request->fecha_inicio;
+        $arriendo->fecha_fin_edit = $request->fecha_fin;
+        $arriendo->tipo_edit = $request->tipo;
+        $arriendo->estado_actual_edit = $request->estado_actual;
+        $arriendo->valor_arriendo_edit = $request->valor_arriendo;
+        $arriendo->imagen_entrega_edit = $request->file('imagen_entrega')->store('public/arriendos');
+        $arriendo->imagen_devolucion_edit = $request->file('imagen_devolucion')->store('public/arriendos');
+        $arriendo->save();
+        return redirect()->route('arriendos.index');
     }
 
     /**
@@ -75,6 +89,7 @@ class ArriendosController extends Controller
      */
     public function destroy(Arriendo $arriendo)
     {
-        //
+        $arriendo->delete();
+        return redirect()->route('arriendos.index');
     }
 }

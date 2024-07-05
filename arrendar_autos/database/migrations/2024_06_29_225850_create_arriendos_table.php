@@ -19,16 +19,19 @@ return new class extends Migration
             $table->unsignedBigInteger('rut_arrendatario');
             $table->foreign('rut_arrendatario')->reference('id')->on('clientes');
 
+            $table->unsignedBigInteger('tipo');
+            $table->foreign('tipo')->reference('id')->on('tipos');
+            $table->unsignedBigInteger('valor_arriendo');
+
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
 
-            $table->unsignedBigInteger('tipo');
-            $table->foreign('tipo')->reference('id')->on('tipos');
+            $table->string('estado_arriendo');
 
-            $table->string('estado_actual');
-            $table->foreign('estado_actual')->reference('estado')->on('vehiculos');
+            $table->string('imagen_entrega')->nullable();
+            $table->string('imagen_recepcion')->nullable();
 
-
+            $table->softDeletes();
         });
     }
 

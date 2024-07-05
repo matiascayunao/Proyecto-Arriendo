@@ -21,7 +21,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.create');
     }
 
     /**
@@ -29,7 +29,15 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente();
+
+        $cliente->rut = $request->rut_cliente;
+        $cliente->nombre = $request->nombre_cliente;
+        $cliente->apellido = $request->apellido_cliente;
+
+        $cliente->save();
+
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -53,7 +61,13 @@ class ClientesController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $cliente->rut_edit = $request->rut_cliente;
+        $cliente->nombre_edit = $request->nombre_cliente;
+        $cliente->apellido_edit = $request->apellido_cliente;
+
+        $cliente->save();
+
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -61,6 +75,7 @@ class ClientesController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return redirect()->route('clientes.index');
     }
 }

@@ -27,7 +27,8 @@ class UsuariosController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
+        $perfiles = Perfil::all();
         return view('usuarios.create');
     }
 
@@ -69,7 +70,14 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->rut_edit = $request->rut;
+        $usuario->nombre_edit = $request->nombre;
+        $usuario->n_rol_edit = $request->n_rol;
+        $usuario->contraseña = Hash::make($request->contraseña);
+
+        $usuario->save();
+
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -77,7 +85,8 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return redirect()->route('usuarios.index');
     }
 
     public function verificar(request $request)
@@ -99,5 +108,10 @@ class UsuariosController extends Controller
     {
         Auth::logout();
         return redirect()->route('/');
+    }
+    
+    public function contrasena()
+    {
+        return view('usuarios.contrasena');
     }
 }

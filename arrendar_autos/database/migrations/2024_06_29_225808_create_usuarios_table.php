@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->unsignedBigInteger('n_rol');
             $table->foreign('n_rol')->references('id')->on('perfiles');
+
+            $table->softDeletes();
         });
     }
 

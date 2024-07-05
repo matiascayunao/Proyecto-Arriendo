@@ -12,7 +12,8 @@ class VehiculosController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculos = Vehiculo::with('tipo')->get();
+        return view('vehiculos.index', compact('vehiculos'));
     }
 
     /**
@@ -20,7 +21,8 @@ class VehiculosController extends Controller
      */
     public function create()
     {
-        //
+        $tipos = Tipo::all();  
+        return view('vehiculos.create');
     }
 
     /**
@@ -30,6 +32,16 @@ class VehiculosController extends Controller
     {
         $vehiculo = new Vehiculo();
 
+        $vehiculo->matricula = $request->matricula;
+        $vehiculo->nombre_vehiculo = $request->nombre_vehiculo;
+        $vehiculo->tipo_v = $request->tipo_v;
+        $vehiculo->marca = $request->marca;
+        $vehiculo->modelo = $request->modelo;
+        $vehiculo->año = $request->año;
+        $vehiculo->estado = $request->estado;
+        $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+        
+        $vehiculo->save();
         
     }
 
@@ -38,7 +50,8 @@ class VehiculosController extends Controller
      */
     public function show(Vehiculo $vehiculo)
     {
-        //
+        $vehiculo = Vehiculo::with('tipo')->find($vehiculo->id);
+        return view('vehiculos.show', compact('vehiculo'));
     }
 
     /**
@@ -54,7 +67,18 @@ class VehiculosController extends Controller
      */
     public function update(Request $request, Vehiculo $vehiculo)
     {
-        //
+        $vehiculo->matricula_edit = $request->matricula;
+        $vehiculo->nombre_vehiculo_edit = $request->nombre_vehiculo;
+        $vehiculo->tipo_v_edit = $request->tipo_v;
+        $vehiculo->marca_edit = $request->marca;
+        $vehiculo->modelo_edit = $request->modelo;
+        $vehiculo->año_edit = $request->año;
+        $vehiculo->estado_edit = $request->estado;
+        $vehiculo->imagen_edit = $request->file('imagen')->store('public/vehiculos');
+        
+        $vehiculo->save();
+
+        return redirect()->route('vehiculos.index');
     }
 
     /**
@@ -62,6 +86,7 @@ class VehiculosController extends Controller
      */
     public function destroy(Vehiculo $vehiculo)
     {
-        //
+        $vehiculo->delete();
+        return redirect()->route('vehiculos.index');
     }
 }
