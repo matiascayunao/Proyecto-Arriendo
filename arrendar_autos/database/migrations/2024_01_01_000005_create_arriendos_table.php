@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('arriendos', function (Blueprint $table) {
             $table->id();
             $table->string('matricula_arriendo');
-            $table->foreign('matricula_arriendo')->reference('matricula')->on('vehiculos');
+            $table->foreign('matricula_arriendo')->references('matricula')->on('vehiculos');
 
             $table->unsignedBigInteger('rut_arrendatario');
-            $table->foreign('rut_arrendatario')->reference('id')->on('clientes');
+            $table->foreign('rut_arrendatario')->references('id')->on('clientes');
 
             $table->unsignedBigInteger('tipo');
-            $table->foreign('tipo')->reference('id')->on('tipos');
+            $table->foreign('tipo')->references('id')->on('tipos');
             $table->unsignedBigInteger('valor_arriendo');
 
             $table->dateTime('fecha_inicio');

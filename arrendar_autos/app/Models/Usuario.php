@@ -26,12 +26,12 @@ class Usuario extends Authenticatable
 
     public function admin():bool
     {
-        return $this->n_rol == 'admin';
+        return $this->n_rol == '1';
     }
 
     public function ejecutivo():bool
     {
-        return $this->n_rol == 'ejecutivo';
+        return $this->n_rol == '2';
     }
 
 }

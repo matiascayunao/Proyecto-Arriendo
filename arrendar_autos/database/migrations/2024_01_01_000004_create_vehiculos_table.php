@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->string('matricula')->primary();
             $table->string('nombre_vehiculo');
-            $table->string('tipo_v');
-            $table->foreign('tipo_v')->reference('id')->on('tipos');
+            $table->unsignedBigInteger('tipo_v');
+            $table->foreign('tipo_v')->references('id')->on('tipos');
             $table->string('marca');
             $table->string('año');
             $table->string('estado');

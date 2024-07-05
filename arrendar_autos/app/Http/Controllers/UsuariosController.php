@@ -92,6 +92,10 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index');
     }
 
+    public function login()
+    {
+        return view('usuarios.login');
+    }
     public function verificar(request $request)
     {
         $credenciales = $request->only('rut', 'contraseña');
