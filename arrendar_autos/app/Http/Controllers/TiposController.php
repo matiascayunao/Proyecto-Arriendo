@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\TipoRequest;
+
 
 class TiposController extends Controller
 {
@@ -27,7 +29,7 @@ class TiposController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TipoRequest $request)
     {
         $tipo = new Tipo();
 

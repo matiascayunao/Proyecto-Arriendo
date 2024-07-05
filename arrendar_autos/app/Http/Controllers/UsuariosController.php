@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Gate;
+use App\Models\Perfil;
+use App\Http\Requests\UsuarioRequest;
+
 
 class UsuariosController extends Controller
 {
@@ -35,7 +38,7 @@ class UsuariosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
         $usuario = new Usuario();
 

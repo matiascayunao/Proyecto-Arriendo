@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Arriendo;
 use Illuminate\Http\Request;
+use App\Models\Vehiculo;
+use App\Models\Cliente;
+use App\Models\Tipo;
+use App\Http\Requests\ArriendoRequest;
 
 class ArriendosController extends Controller
 {
@@ -30,7 +34,7 @@ class ArriendosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArriendoRequest $request)
     {
         $arriendo = new Arriendo();
 
