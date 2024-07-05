@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('año');
             $table->string('estado');
+            $table->string('imagen')->nullable();
+
+            $table->softDeletes();
 
         });
     }

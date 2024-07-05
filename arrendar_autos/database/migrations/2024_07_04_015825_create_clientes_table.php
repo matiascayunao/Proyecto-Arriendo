@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('rut_cliente')->unique();
             $table->string('nombre_cliente');
             $table->string('apellido_cliente');
+            $table->softDeletes();
         });
     }
 
