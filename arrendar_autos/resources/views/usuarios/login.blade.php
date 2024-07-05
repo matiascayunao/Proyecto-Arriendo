@@ -13,12 +13,12 @@
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Iniciar Sesión</h5>
-                        <form method="POST" action="{{ route('usuarios.autenticar') }}">
+                        <form method="POST" action="{{ route('usuarios.verificar') }}">
                             @csrf
                             {{-- email --}}
                             <div class="mb-3">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                                <label for="rut">Rut</label>
+                                <input type="rut" class="form-control" id="rut" name="rut" value="{{ old('rut') }}">
                             </div>
 
                             {{-- password --}}

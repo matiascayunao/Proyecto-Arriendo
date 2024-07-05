@@ -21,12 +21,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('usuarios.gestionar', function (Usuario $usuario) {
+        Gate::define('usuarios-gestion', function (Usuario $usuario) {
             return $usuario->admin();
         });
 
-        Gate::define('usuarios.algo', function (Usuario $usuario) {
+        Gate::define('usuarios-ventas', function (Usuario $usuario) {
             return $usuario->ejecutivo();
+        });
+
+        Gate::define('usuarios-gestion', function(Usuario $usuario) {
+            return $usuario->admin() ||  $usuario->ejecutivo();
         });
     }
 }
