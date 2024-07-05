@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('tipo_v');
             $table->foreign('tipo_v')->reference('id')->on('tipos');
             $table->string('marca');
-            $table->string('modelo');
             $table->string('año');
             $table->string('estado');
             $table->string('imagen')->nullable();

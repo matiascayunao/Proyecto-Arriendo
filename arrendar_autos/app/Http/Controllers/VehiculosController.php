@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
+use App\Models\Tipo;
+use App\Http\Requests\VehiculoRequest;
+
 
 class VehiculosController extends Controller
 {
@@ -28,7 +31,7 @@ class VehiculosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(VehiculoRequest $request)
     {
         $vehiculo = new Vehiculo();
 
@@ -36,7 +39,6 @@ class VehiculosController extends Controller
         $vehiculo->nombre_vehiculo = $request->nombre_vehiculo;
         $vehiculo->tipo_v = $request->tipo_v;
         $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
         $vehiculo->año = $request->año;
         $vehiculo->estado = $request->estado;
         $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
@@ -71,7 +73,6 @@ class VehiculosController extends Controller
         $vehiculo->nombre_vehiculo_edit = $request->nombre_vehiculo;
         $vehiculo->tipo_v_edit = $request->tipo_v;
         $vehiculo->marca_edit = $request->marca;
-        $vehiculo->modelo_edit = $request->modelo;
         $vehiculo->año_edit = $request->año;
         $vehiculo->estado_edit = $request->estado;
         $vehiculo->imagen_edit = $request->file('imagen')->store('public/vehiculos');
