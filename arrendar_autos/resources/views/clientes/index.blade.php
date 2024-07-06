@@ -16,6 +16,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Acciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -37,8 +38,9 @@
                             <form method="GET" action="{{ route('clientes.edit', $cliente->rut_cliente) }}">
                                 <button class="btn btn-sm btn-warning text-white" data-bs-toggle="tooltip" data-bs-title="Editar Cliente">Editar</button>
                             </form>
+                            
                         </div>
-                    </td> 
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

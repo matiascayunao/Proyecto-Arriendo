@@ -9,8 +9,8 @@
   <body>
     <div class="container vh-100 d-flex align-items-center">
         <div class="row w-100">
-            <div class="offset-1 col-10 offset-md-3 col-md-6 d-flex justify-content-center">
-                <div class="card w-100">
+            <div class="col-10  col-md-6 d-flex justify-content-center">
+                <div class="card ">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Iniciar Sesión</h5>
                         <form method="POST" action="{{ route('usuarios.verificar') }}">
@@ -28,14 +28,16 @@
                             </div>
 
                             {{-- botones --}}
-                            <div class="mb-3 d-grid gap-2 d-md-block text-end">
+                            <div class="mb-3 d-grid  d-md-block text-end">
                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </div>
                         </form>
 
                         {{-- Formulario para crear cuenta --}}
                         <form method="GET" action="{{ route('usuarios.create') }}">
-                            <button type="submit" class="btn btn-secondary">Crear Cuenta</button>
+                            <div class="mb-3 d-grid  d-md-block text-end">
+                                <button type="submit" class="btn btn-secondary">Crear Cuenta</button>
+                            </div>
                         </form>
 
                         {{-- errores -
