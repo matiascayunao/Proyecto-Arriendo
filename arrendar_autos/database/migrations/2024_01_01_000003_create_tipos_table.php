@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tipos', function (Blueprint $table) {
-            $table->id();
-            $table->string('tipo_vehiculo');
+            $table->id(); 
+            $table->string('tipo_vehiculo')->unique(); 
             $table->unsignedBigInteger('precio_tipo');
             $table->softDeletes();
         });

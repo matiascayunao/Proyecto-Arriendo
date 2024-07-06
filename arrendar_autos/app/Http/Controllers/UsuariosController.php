@@ -49,7 +49,7 @@ class UsuariosController extends Controller
 
         $usuario->save();
 
-        return redirect()->route('home.index');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -65,7 +65,8 @@ class UsuariosController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        return view('usuarios.edit', compact('usuario'));
+        $perfiles = Perfil::all();
+        return view('usuarios.edit', compact('usuario','perfiles'));
     }
 
     /**
@@ -73,9 +74,9 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        $usuario->rut_edit = $request->rut;
-        $usuario->nombre_edit = $request->nombre;
-        $usuario->n_rol_edit = $request->n_rol;
+        $usuario->rut = $request->rut;
+        $usuario->nombre = $request->nombre;
+        $usuario->n_rol = $request->n_rol;
         $usuario->contraseña = Hash::make($request->contraseña);
 
         $usuario->save();

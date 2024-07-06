@@ -10,12 +10,13 @@
         </div>
         @else
         <table class="table table-bordered table-striped table-hover">
-            <thead class="table-dark">
+            <thead class="table">
                 <tr>
                     <th>N°</th>
                     <th>RUT</th>
                     <th>Nombre</th>
                     <th>Rol</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

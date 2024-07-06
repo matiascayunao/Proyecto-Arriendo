@@ -25,7 +25,7 @@ class Vehiculo extends Model
     
     public function tipo(): BelongsTo
     {
-        return $this->belongsTo(Tipo::class, 'tipo_v');
+        return $this->belongsTo('App\Models\Tipo', 'tipo_v');
     }
 
     public function arriendo(): HasMany 
