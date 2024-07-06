@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('home.index')}}">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,10 +43,11 @@
                               Clientes
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Crear Cliente</a></li>
-                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Listar Clientes</a></li>
+                              <li><a class="nav-link" href="{{ route('clientes.create') }}">Crear Cliente</a></li>
+
+                              <li><a class="nav-link" href="{{route('clientes.index')}}">Listar Clientes</a></li>
                             </ul>
-                          </li>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Arriendos
@@ -55,7 +56,7 @@
                               <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Ingresar Arriendo</a></li>
                               <li><a class="nav-link" href="{{route('usuarios.logout')}}">Listar Arriendos</a></li>
                             </ul>
-                          </li>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Usuario
@@ -63,10 +64,8 @@
                             <ul class="dropdown-menu">
                               <li><a class="nav-link" href="{{route('usuarios.createadmin')}}">Crear Usuario</a></li>
                               <li><a class="nav-link" href="{{route('usuarios.index')}}">Listar Usuarios</a></li>
-
-
                             </ul>
-                          </li>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Cuenta
@@ -75,7 +74,7 @@
                               <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Cambiar Contraseña</a></li>
                               <li><a class="nav-link" href="{{route('usuarios.logout')}}">Cerrar Sesión</a></li>
                             </ul>
-                          </li>
+                        </li>
                     </ul>
                 </div>
             </div>

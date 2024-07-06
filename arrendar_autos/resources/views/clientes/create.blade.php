@@ -1,10 +1,10 @@
-@extends('template.master', ['tituloPagina' => 'Editar Cliente'])
+@extends('template.master',['tituloPagina'=>'Crear Cliente'])
 
 @section('contenido')
 
 <div class="col">
     <div class="card">
-        <div class="card-header bg-dark text-white">Edite los datos del Cliente</div>
+        <div class="card-header bg-dark text-white">Ingrese los datos del nuevo Cliente</div>
         <div class="card-body">
             {{-- mensajes de error --}}
             @if($errors->any())
@@ -18,9 +18,8 @@
             </div>
             @endif
             {{-- /mensajes de error --}}
-            <form method="POST" action="{{ route('clientes.update', $cliente->rut_cliente) }}">
+            <form method="POST" action="{{ route('clientes.store') }}">
                 @csrf
-                @method('PUT')
                 <div class="row">
                     <div class="mb-3 col-12 col-md-6">
                         <label for="rut_cliente" class="form-label">RUT</label>
@@ -57,5 +56,4 @@
         </div>
     </div>
 </div>
-
 @endsection

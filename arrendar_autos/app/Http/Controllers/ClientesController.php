@@ -32,9 +32,9 @@ class ClientesController extends Controller
     {
         $cliente = new Cliente();
 
-        $cliente->rut = $request->rut_cliente;
-        $cliente->nombre = $request->nombre_cliente;
-        $cliente->apellido = $request->apellido_cliente;
+        $cliente->rut_cliente = $request->input('rut_cliente');
+        $cliente->nombre_cliente = $request->input('nombre_cliente');
+        $cliente->apellido_cliente = $request->input('apellido_cliente');
 
         $cliente->save();
 
@@ -46,7 +46,7 @@ class ClientesController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -54,17 +54,17 @@ class ClientesController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteRequest $request, Cliente $cliente)
     {
-        $cliente->rut_edit = $request->rut_cliente;
-        $cliente->nombre_edit = $request->nombre_cliente;
-        $cliente->apellido_edit = $request->apellido_cliente;
+        $cliente->rut_cliente = $request->input('rut_cliente');
+        $cliente->nombre_cliente = $request->input('nombre_cliente');
+        $cliente->apellido_cliente = $request->input('apellido_cliente');
 
         $cliente->save();
 

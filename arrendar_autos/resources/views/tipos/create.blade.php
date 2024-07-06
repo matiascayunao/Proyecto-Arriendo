@@ -27,7 +27,6 @@
                         @error('tipo_vehiculo')
                         <div id="tipo_vehiculoFeedback" class="invalid-feedback">
                             {{$message}}
-                        tipo_vehiculo
                         @enderror
                     </div>
                     <div class="mb-3 col-12 col-md-6">
