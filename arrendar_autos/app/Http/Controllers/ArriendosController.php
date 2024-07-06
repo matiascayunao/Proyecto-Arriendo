@@ -16,7 +16,7 @@ class ArriendosController extends Controller
      */
     public function index()
     {
-        $arriendos = Arriendo::with('vehiculo','cliente','tipo')->get();
+        $arriendos = Arriendo::all();
         return view('arriendos.index', compact('arriendos'));
     }
 
@@ -35,25 +35,32 @@ class ArriendosController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ArriendoRequest $request)
-    {
-        $arriendo = new Arriendo();
+{
+    $arriendo = new Arriendo();
 
-        $arriendo->matricula_arriendo = $request->matricula_arriendo;
-        $arriendo->rut_arrendatario = $request->rut_arrendatario;
-        $arriendo->fecha_inicio = $request->fecha_inicio;
-        $arriendo->fecha_fin = $request->fecha_fin;
-        $arriendo->tipo = $request->tipo;
-        $arriendo->estado_actual = $request->estado_actual;
-        $arriendo->valor_arriendo = $request->valor_arriendo;
+    $arriendo->matricula_arriendo = $request->matricula_arriendo;
+    $arriendo->rut_arrendatario = $request->rut_arrendatario;
+    $arriendo->fecha_inicio = $request->fecha_inicio;
+    $arriendo->fecha_fin = $request->fecha_fin;
+    $arriendo->tipo = $request->tipo;
+    $arriendo->estado_arriendo = $request->estado_arriendo;
+    $arriendo->valor_arriendo = $request->valor_arriendo;
+
+    // Verificar y guardar la imagen de entrega si existe
+    if ($request->hasFile('imagen_entrega')) {
         $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/arriendos');
-        $arriendo->imagen_devolucion = $request->file('imagen_devolucion')->store('public/arriendos');
-
-
-        $arriendo->save();
-
-        return redirect()->route('arriendos.index');
-
     }
+
+    // Verificar y guardar la imagen de devolución si existe
+    if ($request->hasFile('imagen_devolucion')) {
+        $arriendo->imagen_devolucion = $request->file('imagen_devolucion')->store('public/arriendos');
+    }
+
+    $arriendo->save();
+
+    return redirect()->route('arriendos.index');
+}
+
 
     /**
      * Display the specified resource.
@@ -68,22 +75,25 @@ class ArriendosController extends Controller
      */
     public function edit(Arriendo $arriendo)
     {
-        //
+        $vehiculos = Vehiculo::all();
+        $clientes = Cliente::all();
+        $tipos = Tipo::all();
+        return view('arriendos.edit', compact('arriendo','vehiculos','clientes','tipos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Arriendo $arriendo)
-    {   $arriendo->matricula_arriendo_edit = $request->matricula_arriendo;
-        $arriendo->rut_arrendatario_edit = $request->rut_arrendatario;
-        $arriendo->fecha_inicio_edit = $request->fecha_inicio;
-        $arriendo->fecha_fin_edit = $request->fecha_fin;
-        $arriendo->tipo_edit = $request->tipo;
-        $arriendo->estado_actual_edit = $request->estado_actual;
-        $arriendo->valor_arriendo_edit = $request->valor_arriendo;
-        $arriendo->imagen_entrega_edit = $request->file('imagen_entrega')->store('public/arriendos');
-        $arriendo->imagen_devolucion_edit = $request->file('imagen_devolucion')->store('public/arriendos');
+    {   $arriendo->matricula_arriendo = $request->matricula_arriendo;
+        $arriendo->rut_arrendatario = $request->rut_arrendatario;
+        $arriendo->fecha_inicio = $request->fecha_inicio;
+        $arriendo->fecha_fin = $request->fecha_fin;
+        $arriendo->tipo = $request->tipo;
+        $arriendo->estado_actual = $request->estado_actual;
+        $arriendo->valor_arriendo = $request->valor_arriendo;
+        $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/arriendos');
+        $arriendo->imagen_devolucion = $request->file('imagen_devolucion')->store('public/arriendos');
         $arriendo->save();
         return redirect()->route('arriendos.index');
     }

@@ -5,7 +5,7 @@
     <div class="col">
         @if(count($clientes) == 0)
         <div class="alert alert-warning" role="alert">
-            No hay tipos
+            No hay Clientes
         </div>
         @else
         <table class="table table-bordered table-striped table-hover">

@@ -53,8 +53,8 @@
                               Arriendos
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Ingresar Arriendo</a></li>
-                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Listar Arriendos</a></li>
+                              <li><a class="nav-link" href="{{route('arriendos.create')}}">Ingresar Arriendo</a></li>
+                              <li><a class="nav-link" href="{{route('arriendos.index')}}">Listar Arriendos</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
