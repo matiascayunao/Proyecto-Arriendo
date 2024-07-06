@@ -15,25 +15,25 @@
                         <h5 class="card-title mb-4">Iniciar Sesión</h5>
                         <form method="POST" action="{{ route('usuarios.verificar') }}">
                             @csrf
-                            {{-- rut --}}
+                            
                             <div class="mb-3">
                                 <label for="rut">RUT</label>
                                 <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}">
                             </div>
 
-                            {{-- contraseña --}}
+                          
                             <div class="mb-3">
                                 <label for="password">Contraseña</label>
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
 
-                            {{-- botones --}}
+                      
                             <div class="mb-3 d-grid  d-md-block text-end">
                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </div>
                         </form>
 
-                        {{-- Formulario para crear cuenta --}}
+                       
                         <form method="GET" action="{{ route('usuarios.create') }}">
                             <div class="mb-3 d-grid  d-md-block text-end">
                                 <button type="submit" class="btn btn-secondary">Crear Cuenta</button>

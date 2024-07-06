@@ -46,12 +46,12 @@ class ArriendosController extends Controller
     $arriendo->estado_arriendo = $request->estado_arriendo;
     $arriendo->valor_arriendo = $request->valor_arriendo;
 
-    // Verificar y guardar la imagen de entrega si existe
+    
     if ($request->hasFile('imagen_entrega')) {
         $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/arriendos');
     }
 
-    // Verificar y guardar la imagen de devolución si existe
+    
     if ($request->hasFile('imagen_recepcion')) {
         $arriendo->imagen_recepcion = $request->file('imagen_recepcion')->store('public/arriendos');
     }

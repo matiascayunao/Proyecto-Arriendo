@@ -134,21 +134,21 @@ class UsuariosController extends Controller
     $usuario = Usuario::find($request->rut);
 
     if (!$usuario) {
-        // Manejar el caso cuando no se encuentra al usuario
+        
         return redirect()->back()->withErrors('Usuario no encontrado.');
     }
 
-    // Verificar si la contraseña actual coincide
+    
     if (!Hash::check($request->contrasena_actual, $usuario->contraseña)) {
         return redirect()->back()->withErrors('La contraseña actual no es válida.');
     }
 
-    // Validar que la nueva contraseña y la repetición sean iguales
+    
     if ($request->contrasena_nueva !== $request->repetir_contrasena_nueva) {
         return redirect()->back()->withErrors('Las contraseñas nuevas no coinciden.');
     }
 
-    // Cambiar la contraseña
+    
     $usuario->contraseña = Hash::make($request->contrasena_nueva);
     $usuario->save();
 
