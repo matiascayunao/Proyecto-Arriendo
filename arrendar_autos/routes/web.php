@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\VehiculosController;
+use App\Http\Controllers\TiposController;
 
 
 // Inicio/Home
@@ -31,5 +32,16 @@ Route::get('/vehiculos/{vehiculo}/edit', [VehiculosController::class, 'edit'])->
 Route::put('/vehiculos/{vehiculo}', [VehiculosController::class, 'update'])->name('vehiculos.update');
 Route::delete('/vehiculos/{vehiculo}', [VehiculosController::class, 'destroy'])->name('vehiculos.destroy');
 route::get('/vehiculos/{vehiculo}',[VehiculosController::class,'show'])->name('vehiculos.show');
+
+//tipos
+Route::get('/tipos', [TiposController::class, 'index'])->name('tipos.index');
+Route::get('/tipos/create', [TiposController::class, 'create'])->name('tipos.create');
+Route::post('/tipos', [TiposController::class, 'store'])->name('tipos.store');
+Route::get('/tipos/{tipo}/edit', [TiposController::class, 'edit'])->name('tipos.edit');
+Route::put('/tipos/{tipo}', [TiposController::class, 'update'])->name('tipos.update');
+
+Route::delete('/tipos/{tipo}', [TiposController::class, 'destroy'])->name('tipos.destroy');
+
+
 
 

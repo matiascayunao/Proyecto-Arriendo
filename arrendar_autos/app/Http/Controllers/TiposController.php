@@ -33,8 +33,8 @@ class TiposController extends Controller
     {
         $tipo = new Tipo();
 
-        $tipo->nombre_tipo = $request->tipo_vehiculo;
-        $tipo->precio = $request->precio_tipo;
+        $tipo->tipo_vehiculo = $request->tipo_vehiculo;
+        $tipo->precio_tipo = $request->precio_tipo;
 
         $tipo->save();
         
@@ -54,7 +54,7 @@ class TiposController extends Controller
      */
     public function edit(Tipo $tipo)
     {
-        //
+        return view('tipos.edit', compact('tipo'));
     }
 
     /**
@@ -62,9 +62,9 @@ class TiposController extends Controller
      */
     public function update(Request $request, Tipo $tipo)
     {
-        $tipo->nombre_tipo_edit = $request->tipo_vehiculo;
-        $tipo->precio_edit = $request->precio_tipo;
-
+        $tipo->tipo_vehiculo = $request->tipo_vehiculo;
+        $tipo->precio_tipo = $request->precio_tipo;
+        
         $tipo->save();
         
         return redirect()->route('tipos.index');

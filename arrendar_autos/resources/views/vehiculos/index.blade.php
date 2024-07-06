@@ -30,7 +30,13 @@
                     <td class="align-middle">{{$num + 1}}</td>
                     <td class="align-middle">{{$vehiculo->matricula}}</td>
                     <td class="align-middle">{{$vehiculo->nombre_vehiculo}}</td>
-                    <td class="align-middle">{{$vehiculo->tipo->tipo_vehiculo}}</td>
+                    <td class="align-middle">
+                        @if($vehiculo->tipo)
+                            {{$vehiculo->tipo->tipo_vehiculo}}
+                        @else
+                            Sin tipo asignado
+                        @endif
+                    </td>
                     <td class="align-middle">{{$vehiculo->marca}}</td>
                     <td class="align-middle">{{$vehiculo->año}}</td>
                     <td class="align-middle">{{$vehiculo->estado}}</td>
