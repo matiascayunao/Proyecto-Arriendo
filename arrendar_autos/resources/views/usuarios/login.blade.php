@@ -24,7 +24,7 @@
                             {{-- contraseña --}}
                             <div class="mb-3">
                                 <label for="password">Contraseña</label>
-                                <input type="password" class="form-control" id="password" name="contraseña">
+                                <input type="password" class="form-control" id="password" name="password">
                             </div>
 
                             {{-- botones --}}
