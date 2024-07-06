@@ -82,7 +82,7 @@
                               <li><a class="nav-link @if(Route::current()->getName() == 'usuarios.logout') active @endif" href="{{ route('usuarios.logout') }}">Cerrar Sesión</a></li>
                             </ul>
                         </li>
-                        @endif
+                        
                     </ul>
                 </div>
             </div>
