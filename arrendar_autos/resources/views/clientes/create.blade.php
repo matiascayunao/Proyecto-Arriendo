@@ -4,7 +4,7 @@
 
 <div class="col">
     <div class="card">
-        <div class="card-header bg-dark text-white">Ingrese los datos del nuevo Cliente</div>
+        <div class="card-header ">Ingrese los datos del nuevo Cliente</div>
         <div class="card-body">
             {{-- mensajes de error --}}
             @if($errors->any())

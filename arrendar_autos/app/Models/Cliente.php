@@ -20,11 +20,6 @@ class Cliente extends Model
 
     public $timestamps = false;
 
-    protected $fillable = [
-        'rut_cliente',
-        'nombre_cliente',
-        'apellido_cliente',
-    ];
 
     public function arriendos(): HasMany
     {

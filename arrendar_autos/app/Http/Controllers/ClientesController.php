@@ -46,7 +46,8 @@ class ClientesController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        return view('clientes.show', compact('cliente'));
+        //
+
     }
 
     /**

@@ -34,7 +34,7 @@
                     <td class="align-middle">{{$arriendo->valor_arriendo}}</td>
                     <td class="align-middle">{{$carbon::parse($arriendo->fecha_inicio)->format('d-m-Y h:i a')}}</td>
                     <td class="align-middle">{{$carbon::parse($arriendo->fecha_fin)->format('d-m-Y h:i a')}}</td>
-
+                    <td class="align-middle">{{$arriendo->estado_arriendo}}</td>
                     <td class="align-middle">
                         <div class="btn-group" role="group" aria-label="Acciones">
                             <form method="POST" action="{{ route('arriendos.destroy', $arriendo->id) }}" style="display:inline;">
@@ -44,14 +44,18 @@
                                     Borrar
                                 </button>
                             </form>
-                            <form method="GET" action="{{ route('arriendos.update', $arriendo->id)}}"  >
+                            <form method="GET" action="{{ route('arriendos.edit', $arriendo->id)}}">
+                                @csrf
+                                @method('PUT')
                                 <button class="btn btn-sm btn-warning text-white" data-bs-toggle="tooltip" data-bs-title="Editar arriendo" >Editar</button>
                             </form>
                         </div>
                     </td>
                     <td class="align-middle"> 
                         <div class="btn-group" role="group" aria-label="Acciones">
-                            <form method="GET" action="{{ route('arriendos.show', $arriendo->id)}}"  >
+                            <form method="GET" action="{{ route('arriendos.show', $arriendo->id)}}">
+                                @csrf
+                                @method('GET')
                                 <button class="btn btn-sm btn-warning text-white" data-bs-toggle="tooltip" data-bs-title="Ver Arriendo" >Ver imagen 1</button>
                             </form>
                         </div>

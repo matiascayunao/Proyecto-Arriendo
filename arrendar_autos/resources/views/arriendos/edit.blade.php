@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="col">
     <div class="card">
-        <div class="card-header bg-dark text-white">Edite los datos del arriendo</div>
+        <div class="card-header bg-primary">Edite los datos del arriendo</div>
         <div class="card-body">
             {{-- mensajes de error --}}
             @if($errors->any())

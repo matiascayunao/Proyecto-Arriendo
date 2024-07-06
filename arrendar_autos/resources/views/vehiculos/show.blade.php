@@ -5,8 +5,8 @@
 <div class="row">
     <div class="col">
         <div class="card mb-3">
-            <img src="{{ Storage::url($vehiculo->imagen) }}" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column justify-content-between">
+            <img src="{{ Storage::url($vehiculo->imagen) }}" class="card-img-top" >
+            <div class="card-body d-flex flex-column ">
                 <h5 class="card-title">{{ $vehiculo->nombre_vehiculo }}</h5>
                 <p class="card-text">Imagen del vehiculo {{$vehiculo->nombre_vehiculo}}</p>
             </div>

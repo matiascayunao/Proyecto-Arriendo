@@ -52,8 +52,8 @@ class ArriendosController extends Controller
     }
 
     // Verificar y guardar la imagen de devolución si existe
-    if ($request->hasFile('imagen_devolucion')) {
-        $arriendo->imagen_devolucion = $request->file('imagen_devolucion')->store('public/arriendos');
+    if ($request->hasFile('imagen_recepcion')) {
+        $arriendo->imagen_recepcion = $request->file('imagen_recepcion')->store('public/arriendos');
     }
 
     $arriendo->save();
@@ -82,19 +82,40 @@ class ArriendosController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+    * Update the specified resource in storage.
+    */
     public function update(Request $request, Arriendo $arriendo)
-    {   $arriendo->matricula_arriendo = $request->matricula_arriendo;
+    {
+        $arriendo->matricula_arriendo = $request->matricula_arriendo;
         $arriendo->rut_arrendatario = $request->rut_arrendatario;
         $arriendo->fecha_inicio = $request->fecha_inicio;
         $arriendo->fecha_fin = $request->fecha_fin;
         $arriendo->tipo = $request->tipo;
-        $arriendo->estado_actual = $request->estado_actual;
+        $arriendo->estado_arriendo = $request->estado_arriendo;
         $arriendo->valor_arriendo = $request->valor_arriendo;
-        $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/arriendos');
-        $arriendo->imagen_devolucion = $request->file('imagen_devolucion')->store('public/arriendos');
+
+        
+        if ($request->hasFile('imagen_entrega')) {
+            
+            if ($arriendo->imagen_entrega) {
+                Storage::delete($arriendo->imagen_entrega);
+            }
+            
+            $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/arriendos');
+        }
+
+        
+        if ($request->hasFile('imagen_recepcion')) {
+            
+            if ($arriendo->imagen_recepcion) {
+                Storage::delete($arriendo->imagen_recepcion);
+            }
+            
+            $arriendo->imagen_recepcion = $request->file('imagen_recepcion')->store('public/arriendos');
+        }
+
         $arriendo->save();
+
         return redirect()->route('arriendos.index');
     }
 
