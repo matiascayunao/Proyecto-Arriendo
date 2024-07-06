@@ -17,9 +17,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        
                         <li class="nav-item">
                             <a class="nav-link @if(Route::current()->getName() == 'home.index') active @endif" aria-current="page" href="{{ route('home.index') }}">Inicio</a>
                         </li>
+                        
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Vehículos
@@ -29,6 +32,8 @@
                               <li><a class="nav-link @if(Route::current()->getName() == 'vehiculos.index') active @endif" href="{{ route('vehiculos.index') }}">Listar Vehículos</a></li>
                             </ul>
                           </li>
+
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Tipos de vehículos
@@ -47,6 +52,7 @@
                               <li><a class="nav-link @if(Route::current()->getName() == 'clientes.index') active @endif" href="{{ route('clientes.index') }}">Listar Clientes</a></li>
                             </ul>
                         </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Arriendos
@@ -56,6 +62,7 @@
                               <li><a class="nav-link @if(Route::current()->getName() == 'arriendos.index') active @endif" href="{{ route('arriendos.index') }}">Listar Arriendos</a></li>
                             </ul>
                         </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Usuario
@@ -65,6 +72,7 @@
                               <li><a class="nav-link @if(Route::current()->getName() == 'usuarios.index') active @endif" href="{{ route('usuarios.index') }}">Listar Usuarios</a></li>
                             </ul>
                         </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Cuenta
@@ -74,15 +82,7 @@
                               <li><a class="nav-link @if(Route::current()->getName() == 'usuarios.logout') active @endif" href="{{ route('usuarios.logout') }}">Cerrar Sesión</a></li>
                             </ul>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            @if(auth()->check())
-                                <span class="navbar-text text-light">
-                                    Usuario: {{ auth()->user()->nombre }} ({{ auth()->user()->perfil->nombre }})
-                                </span>
-                            @endif
-                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>

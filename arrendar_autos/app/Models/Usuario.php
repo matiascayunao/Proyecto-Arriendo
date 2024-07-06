@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Usuario extends Model
+class Usuario extends model
 
 {
     use HasFactory, SoftDeletes;

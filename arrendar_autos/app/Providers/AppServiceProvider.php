@@ -26,11 +26,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('usuarios-ventas', function (Usuario $usuario) {
-            return $usuario->ejecutivo();
+            return $usuario->ejecutivo() || $usuario->admin();
         });
 
-        Gate::define('usuarios-gestion', function(Usuario $usuario) {
-            return $usuario->admin() ||  $usuario->ejecutivo();
-        });
+
+
+
     }
 }
