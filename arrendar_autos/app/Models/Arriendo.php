@@ -14,6 +14,8 @@ class Arriendo extends Model
 
     protected $table = 'arriendos';
 
+    public $timestamps = false;
+
     public function vehiculo(): BelongsTo
     {
         return $this->belongsTo(Vehiculo::class, 'matricula_arriendo');

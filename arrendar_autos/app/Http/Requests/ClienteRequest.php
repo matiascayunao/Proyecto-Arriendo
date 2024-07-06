@@ -23,7 +23,7 @@ class ClienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'rut_cliente' => ['required','integer','max:9', 'min:7','unique:clientes,rut_cliente'],
+            'rut_cliente' => ['required','string','max:9', 'min:7','unique:clientes,rut_cliente'],
             'nombre_cliente' => ['required','alpha','min:2','max:20'],
             'apellido_cliente' => ['required','alpha','min:2','max:20'],
         ];  
@@ -33,8 +33,8 @@ class ClienteRequest extends FormRequest
         return [
             'rut_cliente.required' => 'Indique el rut del cliente',
             'rut_cliente.unique' => 'El rut del cliente ya existe en la base de datos',
-            'rut_cliente.min' => 'El rut del cliente debe tener como mínimo 7 números',
-            'rut_cliente.max' => 'El rut del cliente debe tener como máximo 9 números',
+            'rut_cliente.min' => 'El rut del cliente debe tener como mínimo 7 caracteres',
+            'rut_cliente.max' => 'El rut del cliente debe tener como máximo 9 caracteres',
             'nombre_cliente.required' => 'Indique el nombre del cliente',
             'nombre_cliente.alpha' => 'El nombre del cliente debe ser solo letras',
             'nombre_cliente.min' => 'El nombre del cliente debe tener como mínimo 2 letras',
