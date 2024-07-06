@@ -13,18 +13,18 @@
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Iniciar Sesión</h5>
-                        <form method="POST" action="{{ route('usuarios.verificar') }}">
+                        <form method="POST" action="{{ route('usuarios.verficar') }}">
                             @csrf
-                            {{-- email --}}
+                            {{-- rut --}}
                             <div class="mb-3">
-                                <label for="rut">Rut</label>
-                                <input type="rut" class="form-control" id="rut" name="rut" value="{{ old('rut') }}">
+                                <label for="rut">RUT</label>
+                                <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}">
                             </div>
 
-                            {{-- password --}}
+                            {{-- contraseña --}}
                             <div class="mb-3">
                                 <label for="password">Contraseña</label>
-                                <input type="password" class="form-control" id="password" name="password">
+                                <input type="password" class="form-control" id="password" name="contraseña">
                             </div>
 
                             {{-- botones --}}
@@ -33,10 +33,15 @@
                             </div>
                         </form>
 
-                        {{-- errores --}}
+                        {{-- Formulario para crear cuenta --}}
+                        <form method="GET" action="{{ route('usuarios.create') }}">
+                            <button type="submit" class="btn btn-secondary">Crear Cuenta</button>
+                        </form>
+
+                        {{-- errores -
                         @if($errors->any())
-                        <div class="alert alert-warning py-1">
-                            {{ $errors->all()[0] }}
+                        <div class="alert alert-warning py-1 mt-3">
+                            {{ $errors->first() }}
                         </div>
                         @endif
                         {{-- /errores --}}
