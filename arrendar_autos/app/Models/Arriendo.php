@@ -30,4 +30,6 @@ class Arriendo extends Model
     {
         return $this->belongsTo(Cliente::class, 'rut_arrendatario');
     }
+
+    
 }

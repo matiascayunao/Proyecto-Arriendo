@@ -13,7 +13,7 @@
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Iniciar Sesión</h5>
-                        <form method="POST" action="{{ route('usuarios.verficar') }}">
+                        <form method="POST" action="{{ route('usuarios.verificar') }}">
                             @csrf
                             {{-- rut --}}
                             <div class="mb-3">
