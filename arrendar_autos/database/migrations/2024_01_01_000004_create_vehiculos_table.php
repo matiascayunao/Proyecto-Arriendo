@@ -14,15 +14,14 @@ return new class extends Migration
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->string('matricula')->primary();
             $table->string('nombre_vehiculo');
-            $table->unsignedBigInteger('tipo_v');
-            $table->foreign('tipo_v')->references('id')->on('tipos');
+            $table->unsignedBigInteger('tipo_v'); // Cambiado a unsignedBigInteger
+            $table->foreign('tipo_v')->references('id')->on('tipos'); // Referencia la columna 'id' en 'tipos'
             $table->string('marca');
             $table->string('año');
             $table->string('estado');
             $table->string('imagen')->nullable();
 
             $table->softDeletes();
-
         });
     }
 

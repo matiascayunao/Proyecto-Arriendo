@@ -25,8 +25,8 @@
                               Vehiculos
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Cambiar Contraseña</a></li>
-                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Cerrar Sesión</a></li>
+                              <li><a class="nav-link" href="{{route('vehiculos.create')}}">Crear Vehiculo</a></li>
+                              <li><a class="nav-link" href="{{route('vehiculos.index')}}">Listar Vehiculos</a></li>
                             </ul>
                           </li>
                         <li class="nav-item dropdown">
@@ -34,8 +34,8 @@
                               Clientes
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Cambiar Contraseña</a></li>
-                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Cerrar Sesión</a></li>
+                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Crear Cliente</a></li>
+                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Listar Clientes</a></li>
                             </ul>
                           </li>
                         <li class="nav-item dropdown">
@@ -43,8 +43,8 @@
                               Arriendos
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Cambiar Contraseña</a></li>
-                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Cerrar Sesión</a></li>
+                              <li><a class="nav-link" href="{{route('usuarios.contrasena')}}">Ingresar Arriendo</a></li>
+                              <li><a class="nav-link" href="{{route('usuarios.logout')}}">Listar Arriendos</a></li>
                             </ul>
                           </li>
                         <li class="nav-item dropdown">

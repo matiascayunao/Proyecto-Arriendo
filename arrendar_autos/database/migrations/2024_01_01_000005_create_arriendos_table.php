@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('matricula_arriendo');
             $table->foreign('matricula_arriendo')->references('matricula')->on('vehiculos');
 
-            $table->unsignedBigInteger('rut_arrendatario');
-            $table->foreign('rut_arrendatario')->references('id')->on('clientes');
+            $table->string('rut_arrendatario');
+            $table->foreign('rut_arrendatario')->references('rut_cliente')->on('clientes');
 
             $table->unsignedBigInteger('tipo');
             $table->foreign('tipo')->references('id')->on('tipos');
