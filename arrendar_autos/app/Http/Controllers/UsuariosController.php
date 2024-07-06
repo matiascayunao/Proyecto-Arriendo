@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use Gate;
+////use Illuminate\Support\Facades\Auth;
+////use Gate;
 use App\Models\Perfil;
 use App\Http\Requests\UsuarioRequest;
 
@@ -18,9 +18,9 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        if (Gate::denies('usuarios.gestionar')) {
-            return redirect()->route('home.index');
-        }
+        ////if (Gate::denies('usuarios.gestionar')) {
+        ////    return redirect()->route('home.index');
+       //// }
 
         $usuarios = Usuario::all();
         return view('usuarios.index', compact('usuarios'));
@@ -32,7 +32,7 @@ class UsuariosController extends Controller
     public function create()
     {   
         $perfiles = Perfil::all();
-        return view('usuarios.create');
+        return view('usuarios.create',compact('perfiles'));
     }
 
     /**
@@ -49,7 +49,7 @@ class UsuariosController extends Controller
 
         $usuario->save();
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('home.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class UsuariosController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        return view('usuarios.edit', compact('usuario'));
     }
 
     /**
@@ -100,10 +100,10 @@ class UsuariosController extends Controller
     {
         $credenciales = $request->only('rut', 'contraseña');
 
-        if (Auth::attempt($credenciales)) {
+        //if (Auth::attempt($credenciales)) {
             return redirect()->route('home.index');
-        }
-        return back()->withErrors('Creedenciales incorrectas')->onlyInput('rut');
+        //}
+       // return back()->withErrors('Creedenciales incorrectas')->onlyInput('rut');
     }
 
     public function nombrePerfil():string
@@ -113,12 +113,45 @@ class UsuariosController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        return redirect()->route('/');
+        //Auth::logout();
+        return redirect()->route('usuarios.login');
     }
     
     public function contrasena()
     {
         return view('usuarios.contrasena');
     }
+
+    public function createadmin()
+    {
+        $perfiles = Perfil::all();
+        return view('usuarios.createadmin',compact('perfiles'));
+    }
+
+    public function cambiocontra(Request $request)
+{
+    $usuario = Usuario::find($request->rut);
+
+    if (!$usuario) {
+        // Manejar el caso cuando no se encuentra al usuario
+        return redirect()->back()->withErrors('Usuario no encontrado.');
+    }
+
+    // Verificar si la contraseña actual coincide
+    if (!Hash::check($request->contrasena_actual, $usuario->contraseña)) {
+        return redirect()->back()->withErrors('La contraseña actual no es válida.');
+    }
+
+    // Validar que la nueva contraseña y la repetición sean iguales
+    if ($request->contrasena_nueva !== $request->repetir_contrasena_nueva) {
+        return redirect()->back()->withErrors('Las contraseñas nuevas no coinciden.');
+    }
+
+    // Cambiar la contraseña
+    $usuario->contraseña = Hash::make($request->contrasena_nueva);
+    $usuario->save();
+
+    return redirect()->route('home.index');
+}
+
 }

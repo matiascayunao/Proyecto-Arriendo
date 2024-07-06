@@ -22,7 +22,7 @@ class UsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'rut' => ['required','integer','max:9', 'min:7','unique:usuarios,rut'],
+            'rut' => ['required','string','max:9', 'min:7','unique:usuarios,rut'],
             'nombre' => ['required','alpha','min:2','max:20'],
             'n_rol' => ['required','integer','min:1','max:2'],
             'contraseña' => ['required','string','min:8','max:20'],
@@ -35,8 +35,8 @@ class UsuarioRequest extends FormRequest
         return [
             'rut.required' => 'Indique el rut del usuario',
             'rut.unique' => 'El rut del usuario ya existe en la base de datos',
-            'rut.min' => 'El rut del usuario debe tener como mínimo 7 números',
-            'rut.max' => 'El rut del usuario debe tener como máximo 9 números',
+            'rut.min' => 'El rut del usuario debe tener como mínimo 7 caracteres',
+            'rut.max' => 'El rut del usuario debe tener como máximo 9 caracteres',
             'nombre.required' => 'Indique el nombre del usuario',
             'nombre.alpha' => 'El nombre del usuario debe ser solo letras',
             'nombre.min' => 'El nombre del usuario debe tener como mínimo 2 letras',
