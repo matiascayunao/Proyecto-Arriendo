@@ -31,6 +31,15 @@
                           </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Tipos de vehiculos
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="nav-link" href="{{route('tipos.create')}}">Crear Tipo de vehiculo</a></li>
+                              <li><a class="nav-link" href="{{route('tipos.index')}}">Listar Tipo de vehiculos</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Clientes
                             </a>
                             <ul class="dropdown-menu">
